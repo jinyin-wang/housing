@@ -110,9 +110,15 @@ function drawTimeLine(result, title) {
 function drawGeoRooms(result, title) {
     var data = JSON.parse(result);
 //  To get column names of most weighted attributes/columns
-    var date = Object.keys(data);
+//     var date = Object.keys(data);
+
     data = Object.values(data);
-    var built_time_price = echarts.init(document.getElementById('built_time_price'));
+
+    var date = Object.keys(data[0]);
+    var data1 = Object.values(data[0]);
+    var data2 = Object.values(data[1]);
+
+    var geo_rooms = echarts.init(document.getElementById('geo_rooms'));
     var option = {
         tooltip: {
             trigger: 'axis',
@@ -122,7 +128,7 @@ function drawGeoRooms(result, title) {
         },
         title: {
             left: 'center',
-            text: 'relationship between price and age of house ',
+            text: 'amounts of houses and rooms sold in each region',
         },
         xAxis: {
             type: 'category',
@@ -132,8 +138,8 @@ function drawGeoRooms(result, title) {
         yAxis: {
             type: 'value',
             boundaryGap: [0, '100%'],
-            min: 300,
-            max: 800
+            max: 2200
+
         },
         dataZoom: [{
             type: 'inside',
@@ -154,8 +160,8 @@ function drawGeoRooms(result, title) {
         }],
         series: [
             {
-                name: 'average data',
-                type: 'line',
+                name: 'line1',
+                type: 'bar',
                 smooth: true,
                 symbol: 'none',
                 sampling: 'average',
@@ -171,14 +177,32 @@ function drawGeoRooms(result, title) {
                         color: 'rgb(255, 70, 131)'
                     }])
                 },
-                data: data
+                data: data1
+            },
+            {
+                name: 'line2',
+                type: 'bar',
+                smooth: true,
+                symbol: 'none',
+                sampling: 'average',
+                itemStyle: {
+                    color: 'rgb(255, 70, 131)'
+                },
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgb(255, 158, 68)'
+                    }, {
+                        offset: 1,
+                        color: 'rgb(255, 70, 131)'
+                    }])
+                },
+                data: data2
             }
         ]
     };
-    built_time_price.setOption(option);
+    geo_rooms.setOption(option);
 }
-
-
 function drawSoldtimePrice(result, chart_title) {
     var data = JSON.parse(result);
 //  To get column names of most weighted attributes/columns
