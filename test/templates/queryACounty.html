@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="alternate" type="application/rss+xml" title="egrappler.com" href=""/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/prettify.css}"/>
+    <link rel="stylesheet" th:href="@{/css/loginForm.css}"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/prettify/prettify.js}"></script>
+    <script th:src="@{/js/layout.js}"></script>
+    <script th:src="@{/js/echarts.js}"></script>
+    <script th:src="@{/js/echarts-bar.js}"></script>
+    <script th:src="@{/js/drawGraph.js}"></script>
+    <script th:src="@{/js/jquery.localscroll-1.2.7.js}" type="text/javascript"></script>
+    <script th:src="@{/js/jquery.scrollTo-1.4.3.1.js}" type="text/javascript"></script>
+</head>
+<body>
+<header>
+    <div class="container" th:include="fragments/header::header"></div>
+</header>
+<div>
+    <div style="margin-left: 20%">
+    <form id="input" name="input" action="/queryACounty" method="post">
+            <input type="text" name="countyName" id="countyName" class="joey"
+                   placeholder="please input the name of the county"/>
+            <input type="submit" value="Search" id="agreementSub"/>
+
+        </form>
+    </div>
+    <br/>
+    <div th:align="center">
+        <input id = "data" type="hidden" th:value="${county}"/>
+        <table class="table table-striped" style="width: 70%" border="2" cellspacing="2"
+               cellpadding="2">
+            <tr align="center">
+                <td>county_name</td>
+                <td>povertyrate</td>
+                <td>food stamps</td>
+                <td>next years poverty</td>
+
+            </tr>
+            <tr th:align="center">
+                <!--<td><a th:href="@{/queryAllDevsByMer(merID=${county.id})}" th:text="${county.merName}"></a></td>-->
+                <td th:text="${county.countyname}"></td>
+                <td th:text="${county.povertyrate}"></td>
+                <td th:text="${afCalculate.foodstamp}"></td>
+                <td th:text="${predictPovertyRate}"></td>
+
+
+            </tr>
+        </table>
+        <input style="float: right;margin-right: 15%" type="button" id="getCounty" value="detail of the county"/>
+
+
+        <br/>
+        <br/>
+    </div>
+    <div id="factors" style="width: 300px;height:300px; margin-left: 10%"></div>
+    <div id="schools" style="width: 400px;height:300px;"></div>
+    <div id="genders" style="width: 400px;height:300px;"></div>
+
+
+</div>
+<style>
+    #schools{
+        width:40%;
+        float:left;
+        clear:right;
+    }
+    #genders{
+        width:30%;
+        float:left;
+        clear:right;
+    }
+    #factors{
+        width:30%;
+        float:left;
+        clear:right;
+    }
+</style>
+</body>
+</html>

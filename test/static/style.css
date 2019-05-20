@@ -1,0 +1,46 @@
+h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.row {
+    transform: translate(0px, 0px);
+}
+
+.dropdown1{
+    float: left;
+}
+
+
+svg {
+  padding: 10px;
+  transform: translate(0px,15px);
+    width: auto;
+}
+
+.axis,
+.frame {
+  shape-rendering: crispEdges;
+}
+
+.axis line {
+  stroke: #ddd;
+}
+
+.axis path {
+  display: none;
+}
+
+.cell text {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.frame {
+  fill: none;
+  stroke: #aaa;
+}
+
+circle {
+  fill-opacity: .7;
+}

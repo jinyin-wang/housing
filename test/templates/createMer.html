@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/prettify.css}"/>
+    <link rel="stylesheet" th:href="@{/css/loginForm.css}"/>
+    <script th:src="@{/js/aggDevMer/jquery.min.js}"></script>
+    <!--<script th:src="@{/js/aggDevMer/userValidate.js}"></script>-->
+    <script th:src="@{/js/merchants/merCreateAjax.js}"></script>
+    <!--<script th:src="@{/js/aggDevMer/userSubmitValidate.js}"></script>-->
+    <script type="text/javascript" th:src="@{/js/prettify/prettify.js}"></script>
+</head>
+<body>
+<div>
+    <header>
+        <div class="container" th:include="fragments/header::header"></div>
+    </header>
+</div>
+<div>
+    <div style="float: left; width: 15%" th:include="fragments/navigator::navigator"></div>
+    <div th:align="center">
+        <h3>添加商户</h3>
+        <br/>
+        <div id="page" style="text-align: center">
+
+            <form id="input" name="input" action="/merchants/queryAllMers" method="post">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr style="display:none">
+                        <td width="40%" align="right"><span class="cl_f30">*</span>ID</td>
+                        <td width="40%" align="left"><input type="text" name="id"/></td>
+                        <td><span id="idTip"></span></td>
+                    </tr>
+                    <tr>
+                        <td width="40%" align="right"><span class="cl_f30">*</span>名&nbsp;&nbsp;&nbsp;&nbsp;称&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td width="40%" align="left"><input type="text" name="merName" id="merName" class="joey"
+                                               placeholder="请输入商户名字" th:value="${merName}"/></td>
+                        <td style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;<span id="nameTip"
+                                                                             style="text-align: left; float: left"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%" align="right"><span class="cl_f30"></span>手&nbsp;&nbsp;&nbsp;&nbsp;机&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td width="40%" align="left"><input type="text" name="mobile" id="mobile" class="joey"
+                                               placeholder="请输入商户手机" th:value="${mobile}"/></td>
+                        <td style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;<span id="mobileTip"
+                                                                             style="text-align: left; float: left"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%" align="right"><span class="cl_f30"></span>邮&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td width="40%" align="left"><input type="text" name="email" id="email" class="joey"
+                                               placeholder="请输入商户邮箱" th:value="${email}"/></td>
+                        <td style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;<span id="emailTip"
+                                                                             style="text-align: left; float: left"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%" align="right"><span class="cl_f30"></span>地&nbsp;&nbsp;&nbsp;&nbsp;址&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td width="40%" align="left"><input type="text" name="address" id="address" class="joey"
+                                               placeholder="请输入商户地址" th:value="${address}"/></td>
+                        <td style="color: red"><span id="addressTip" style="text-align: left; float: left"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%" align="right"><span class="cl_f30">*</span>权&nbsp;&nbsp;&nbsp;&nbsp;限&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td width="40%" style="text-align: left">
+                            <select style="width: 52.5%;" name="oauthType" id="oauthType">
+                                <option th:value="1">不校验</option>
+                                <option th:value="2">校验groupID</option>
+                                <option th:value="3">校验shopID和groupID</option>
+                            </select>
+                        </td>
+                        <!--<td width="30%"><input type="text" name="oauthType" id="oauthType" class="joey"-->
+                        <!--placeholder="请输入商户权限类型"/></td>-->
+                        <td style="color: red"><span id="oauth_typeTip"
+                                                     style="text-align: left; float: left"></span></td>
+                    </tr>
+                </table>
+                <br/>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ttbb2">
+                    <tr>
+                        <td width="40%" th:height="37" align="right"></td>
+                        <td width="5%" th:height="37" align="right">
+                            <div class="jsrz_main_button"><input type="submit" value="确认" id="agreementSub"/></div>
+                        </td>
+                        <td width="10%" th:height="37" align="right"></td>
+                        <td width="5%" th:height="37" align="right"><input type="button" value="返回"
+                                                                           onclick="javascript:history.back(-1);"/>
+                        </td>
+                        <td width="10%" th:height="37" align="right"></td>
+                        <td width="30%" th:height="37" align="right"></td>
+                    </tr>
+                </table>
+                <span th:text="${errMsg}" style="color: red"></span>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

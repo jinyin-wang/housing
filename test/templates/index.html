@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="HandheldFriendly" content="True"/>
+
+    <title>Visualization lab2 - Factors of Wage</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='style.css') }}">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src = "{{ url_for('static', filename='jquery.min.js')}}"></script>
+    <script src = "{{ url_for('static', filename='graph.js')}}"></script>
+    <script src = "{{ url_for('static', filename='pretty.js')}}"></script>
+    <script src = "{{ url_for('static', filename='localscroll-1.2.7.js')}}"></script>
+    <script src = "{{ url_for('static', filename='scrollTo-1.4.3.1.js')}}"></script>
+    <script src = "{{ url_for('static', filename='layout.js')}}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='bootstrap-multiselect.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='easyui.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='prettify.css') }}">
+
+
+</head>
+<body>
+<header>
+
+</header>
+<div>
+    <h1>Housing</h1>
+
+    <hr>
+    <div class="row" >
+     <div class="dropdown1">
+        <select id="multiselect">
+            <option value="Select Task">Select Task</option>
+            <option value="PCA_SCREE">PCA_SCREE</option>
+            <option value="PCA_SCREE_ORIGINAL">PCA_SCREE_ORIGINAL</option>
+            <option value="PCA_RANDOM_SAMPLING">PCA_RANDOM_SAMPLING</option>
+            <option value="PCA_STRATIFIED_SAMPLING">PCA_STRATIFIED_SAMPLING</option>
+            <option value="MDS_EUCLIDEAN_RANDOM_SAMPLING">MDS_EUCLIDEAN_RANDOM_SAMPLING</option>
+            <option value="MDS_CORRELATION_RANDOM_SAMPLING">MDS_CORRELATION_RANDOM_SAMPLING</option>
+        </select>
+     </div>
+    </div>
+</div>
+
+
+</body>
+</html>
